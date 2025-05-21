@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SERVICE_ACCOUNT_FILE = os.getenv("GOOGLE_CREDS", "service-account-creds.json")
+SERVICE_ACCOUNT_FILE = os.getenv("SERVICE_ACCOUNT_JSON", "service-account-creds.json")
 SPREADSHEET_ID = os.getenv("SPREADSHEET_ID")
 if not SPREADSHEET_ID:
     raise RuntimeError("Missing SPREADSHEET_ID environment variable")
