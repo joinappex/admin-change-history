@@ -4,6 +4,7 @@ This is an example model of a sheet that you can manually populate to keep track
 
 To keep things simple to use, it uses two sheets, a "Recent Changes" one, that only contains changes from the last 14 days and a "Historical" one.
 
+You can look at an example template sheet [here](https://docs.google.com/spreadsheets/d/1ZBUeefx5cMomx53adNwjsrCVj5Rd7rBBp2OYAjDQYQo/edit?gid=0#gid=0)
 
 # 🗂 Move "Recent Changes" -> "Historical" Script
 
