@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3
         uses: actions/setup-python@v5
         with:
           python-version: '3.9'
@@ -21,15 +21,18 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install gspread google-auth python-dotenv
 
-      - name: Write Google credentials
-        run: echo "${{ secrets.GOOGLE_CREDS_JSON }}" > service-account-creds.json
+      - name: Write Google credentials to file
+        run: |
+          echo "$GOOGLE_CREDS_JSON" > service-account-creds.json
+        env:
+          GOOGLE_CREDS_JSON: ${{ secrets.GOOGLE_CREDS_JSON }}
 
       - name: Set environment variables
         run: |
           echo "SPREADSHEET_ID=${{ secrets.SPREADSHEET_ID }}" >> $GITHUB_ENV
           echo "GOOGLE_CREDS=service-account-creds.json" >> $GITHUB_ENV
 
-      - name: Run script
+      - name: Run the script
         run: python move_old_changes.py
