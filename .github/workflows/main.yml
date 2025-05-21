@@ -29,9 +29,6 @@ jobs:
         env:
           SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
 
-      - name: Print first line of credentials (debug only)
-        run: head -n 5 service-account-creds.json
-
       - name: Set environment variables
         run: |
           echo "SPREADSHEET_ID=${{ secrets.SPREADSHEET_ID }}" >> $GITHUB_ENV
