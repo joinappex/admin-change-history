@@ -25,9 +25,9 @@ jobs:
 
       - name: Write Google credentials to file
         run: |
-          echo "$GOOGLE_CREDS_JSON" > service-account-creds.json
+          echo "SERVICE_ACCOUNT_JSON" > service-account-creds.json
         env:
-          GOOGLE_CREDS_JSON: ${{ secrets.GOOGLE_CREDS_JSON }}
+          SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
 
       - name: Print first line of credentials (debug only)
         run: head -n 5 service-account-creds.json
@@ -35,7 +35,7 @@ jobs:
       - name: Set environment variables
         run: |
           echo "SPREADSHEET_ID=${{ secrets.SPREADSHEET_ID }}" >> $GITHUB_ENV
-          echo "GOOGLE_CREDS=service-account-creds.json" >> $GITHUB_ENV
+          echo "SERVICE_ACCOUNT_JSON=service-account-creds.json" >> $GITHUB_ENV
 
       - name: Run the script
         run: python move_old_changes.py
