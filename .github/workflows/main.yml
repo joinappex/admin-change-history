@@ -25,7 +25,7 @@ jobs:
 
       - name: Write Google credentials to file
         run: |
-          echo "SERVICE_ACCOUNT_JSON" > service-account-creds.json
+          echo "$SERVICE_ACCOUNT_JSON" > service-account-creds.json
         env:
           SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
 

@@ -7,13 +7,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SERVICE_ACCOUNT_FILE = os.getenv("SERVICE_ACCOUNT_JSON", "service-account-creds.json")
+SERVICE_ACCOUNT_JSON = os.getenv("SERVICE_ACCOUNT_JSON", "service-account-creds.json")
 SPREADSHEET_ID = os.getenv("SPREADSHEET_ID")
 if not SPREADSHEET_ID:
     raise RuntimeError("Missing SPREADSHEET_ID environment variable")
 
 creds = Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE,
+    SERVICE_ACCOUNT_JSON,
     scopes = ["https://www.googleapis.com/auth/spreadsheets"],
 )
 gc      = gspread.authorize(creds)
