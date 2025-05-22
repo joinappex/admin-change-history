@@ -59,42 +59,16 @@ In your GitHub repo → Settings → Secrets and variables → Actions → Add t
 - `SERVICE_ACCOUNT_JSON` – paste contents of your service-account-creds.json
 - `SPREADSHEET_ID` – your sheet ID (from the Google Sheets URL)
 
-### 2. Create Workflow File
+### 2. Enable and Run the Workflow
 
-Create `.github/workflows/move-old-changes.yml`:
+If you've copied or forked this repo, GitHub disables Actions by default. To enable and run the workflow:
 
-```yaml
-name: Move Old Sheet Rows
+1. Go to the **"Actions"** tab of your repository.
+2. You will see a banner asking if you want to enable workflows — click **“I understand…”** and **Enable**.
+3. You will see a workflow named **"Move Old Sheet Rows"**.
+4. Click into it, then press **"Run workflow"** (top-right dropdown) to trigger it manually.
 
-on:
-  schedule:
-    - cron: '0 5 * * *'  # Runs daily at 5 AM UTC
-  workflow_dispatch:
+The script will also run automatically every day if the schedule is enabled.
 
-jobs:
-  move-rows:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.9
-
-      - name: Install dependencies
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install gspread google-auth python-dotenv
-
-      - name: Run script
-        env:
-          SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
-        run: |
-          echo "$SERVICE_ACCOUNT_JSON" > service-account-creds.json
-          source venv/bin/activate
-          python move_old_changes.py
-```
+---
 
