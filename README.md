@@ -1,6 +1,16 @@
-# 🗂 Move Old Changes Script
+# Change History Sheet
 
-This Python script automates the process of archiving old changes from a Google Sheet. It reads from a **"Recent Changes"** sheet, identifies rows older than 14 days based on a **"Change Timestamp"** column, and moves them to a **"Historical"** sheet. It also removes empty rows from the Recent Changes sheet to keep data compact.
+This is an example model of a sheet that you can manually populate to keep track of changes that affect your business. They can either be app releases, backend relesaes, marketing changes (e.g. incrementing budget, changing visuals), outages, external changes, etc.
+
+To keep things simple to use, it uses two sheets, a "Recent Changes" one, that only contains changes from the last 14 days and a "Historical" one.
+
+You can look at an example template sheet [here](https://docs.google.com/spreadsheets/d/1ZBUeefx5cMomx53adNwjsrCVj5Rd7rBBp2OYAjDQYQo/edit?gid=0#gid=0)
+
+# 🗂 Move "Recent Changes" -> "Historical" Script
+
+This repo has a Python script that moves "old" rows from **"Recent Changes"** into the a **"Historical"** sheet.
+It identifies old rows by looking at the **"Change Timestamp"** column and moving those older than 14 days.
+It also removes empty rows from the Recent Changes sheet to keep data compact.
 
 ---
 
