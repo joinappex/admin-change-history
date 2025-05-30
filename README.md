@@ -66,7 +66,7 @@ python move_old_changes.py
 
 In your GitHub repo → Settings → Secrets and variables → Actions → Add the following:
 
-- `SERVICE_ACCOUNT_JSON` – paste contents of your service-account-creds.json
+- `SERVICE_ACCOUNT_JSON` – paste contents of your service-account-creds.json. The service account does not need to have any special roles, just make sure the "Google Sheets API" is enabled in the GCP project for the service account
 - `SPREADSHEET_ID` – your sheet ID (from the Google Sheets URL)
 
 ### 2. Enable and Run the Workflow
