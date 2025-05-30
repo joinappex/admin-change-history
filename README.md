@@ -37,6 +37,14 @@ Your Google Spreadsheet must have a sheet named **"Recent Changes"** with the fo
 
 ---
 
+## Prerequisites 
+
+1. Create a Google Service Account. The service account does not need to have any special roles.
+2. Ensure the Google Cloud Project has the "Google Sheets API" enabled
+3. Find your Spreadsheet ID for the sheet you want to modify. To find the ID, go to Share -> Copy Link and the id is found between `/d/<ID IS HERE>/edit`
+4. Share the spreadsheet with the e-mail of the service account created at 1
+
+
 ## 🖥 Local Usage
 
 ### 1. Create a `.env` file
@@ -66,9 +74,8 @@ python move_old_changes.py
 
 In your GitHub repo → Settings → Secrets and variables → Actions → Add the following:
 
-- `SERVICE_ACCOUNT_JSON` – paste contents of your service-account-creds.json. The service account does not need to have any special roles, just make sure the "Google Sheets API" is enabled in the GCP project for the service account
-- `SPREADSHEET_ID` – your sheet ID (from the Google Sheets URL). Go to Share -> Copy Link and the id is found between `/d/<ID IS HERE>/edit`
-
+- `SERVICE_ACCOUNT_JSON` – paste contents of your service-account-creds.json.
+- `SPREADSHEET_ID` – your sheet ID 
 ### 2. Enable and Run the Workflow
 
 If you've copied or forked this repo, GitHub disables Actions by default. To enable and run the workflow:
