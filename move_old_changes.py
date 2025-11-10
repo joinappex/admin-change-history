@@ -71,6 +71,8 @@ def extract_timestamp(row):
                 ts = datetime.fromisoformat(ts_str)
             except ValueError:
                 ts = datetime.strptime(ts_str, "%m/%d/%Y %H:%M:%S")
+        if ts.tzinfo is None:
+            ts = ts.replace(tzinfo=timezone.utc)
         return ts
     except Exception:
         return datetime.min
