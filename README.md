@@ -12,6 +12,7 @@ This repo has a Python script that moves "old" rows from **"Recent Changes"** in
 It identifies old rows by looking at the **"Change Timestamp"** column and moving those older than 14 days.
 It also removes empty rows from the Recent Changes sheet to keep data compact.
 
+
 ---
 
 ## 📊 Example Spreadsheet Format
